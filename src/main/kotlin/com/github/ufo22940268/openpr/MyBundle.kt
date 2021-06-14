@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.template
+package com.github.ufo22940268.openpr
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls
