@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.ufo22940268.openpr.services
 
+import com.github.ufo22940268.openpr.MyBundle
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
 
 class MyProjectService(project: Project) {
 

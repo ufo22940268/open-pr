@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.ufo22940268.openpr.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.ufo22940268.openpr.MyBundle
 
 class MyApplicationService {
 
