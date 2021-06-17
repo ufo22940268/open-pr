@@ -5,6 +5,6 @@ import org.jetbrains.plugins.template.MyBundle
 class MyApplicationService {
 
     init {
-        println(MyBundle.message("applicationService"))
+        println(MyBundle.message("applicationService"));
     }
 }
