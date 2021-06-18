@@ -19,7 +19,7 @@
     </applicationListeners>
     <actions>
         <action id="com.github.ufo22940268.openpr.GithubPRAction" class="com.github.ufo22940268.openpr.GithubPRAction"
-                text="Open Github PR" description="Open Github PR For Current HEAD">
+                text="Open Github PR" description="Open github PR For current HEAD">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
     </actions>

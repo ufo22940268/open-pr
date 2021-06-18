@@ -20,14 +20,21 @@ public class GithubPRAction : AnAction() {
                 val instance = Git.getInstance()
                 val repo = e.project?.let { GitUtil.getRepositories(it).first() } ?: return
                 val remote = GitUtil.findRemoteByName(repo, "origin") ?: return
+                val head = GitUtil.getHead(repo).toString()
                 val r = instance.lsRemote(e.project!!, e.project?.baseDir!!, remote)
-                val prId = getGithubPRId(r) ?: return
+                val prId = getGithubPRId(r, head) ?: return
+                if (prId == null) {
+                    //TODO
+                    cancelText = "Github PR not found"
+                    return
+                }
                 val url = buildGithubURL(prId, remote)
                 url?.let {
                     com.intellij.ide.BrowserUtil.browse(it)
                 }
             }
         }
+
 
         task.queue()
     }
@@ -37,9 +44,10 @@ public class GithubPRAction : AnAction() {
         return sources.find { it.isMatch() }?.convert()
     }
 
-    private fun getGithubPRId(r: GitCommandResult): String? {
+    private fun getGithubPRId(r: GitCommandResult, head: String): String? {
         for (str in r.output) {
-            val ref = str.split('\t')[1]
+            val (h, ref) = str.split('\t')
+            if (h != head) continue
             val match = """refs/pull/(\d+)/head""".toRegex().find(ref)
             if (match != null && match.groups.first()?.value != null) {
                 return match.groups.last()?.value
