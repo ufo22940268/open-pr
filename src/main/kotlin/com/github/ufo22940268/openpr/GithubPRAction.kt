@@ -1,5 +1,8 @@
 package com.github.ufo22940268.openpr
 
+import com.intellij.notification.NotificationDisplayType
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.progress.ProgressIndicator
@@ -22,10 +25,14 @@ public class GithubPRAction : AnAction() {
                 val remote = GitUtil.findRemoteByName(repo, "origin") ?: return
                 val head = GitUtil.getHead(repo).toString()
                 val r = instance.lsRemote(e.project!!, e.project?.baseDir!!, remote)
-                val prId = getGithubPRId(r, head) ?: return
+                val prId = getGithubPRId(r, head)
                 if (prId == null) {
-                    //TODO
-                    cancelText = "Github PR not found"
+                    val notificationGroup =
+                        NotificationGroup("com.github.ufo22940268.openpr", NotificationDisplayType.STICKY_BALLOON, true)
+                    notificationGroup.createNotification(
+                        "Pull request not found for current head",
+                        NotificationType.ERROR
+                    ).notify(e.project)
                     return
                 }
                 val url = buildGithubURL(prId, remote)
