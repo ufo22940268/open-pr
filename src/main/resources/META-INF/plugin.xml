@@ -18,7 +18,7 @@
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
     <actions>
-        <action id="org.jetbrains.plugins.template.GithubPRAction" class="org.jetbrains.plugins.template.GithubPRAction"
+        <action id="com.github.ufo22940268.openpr.GithubPRAction" class="com.github.ufo22940268.openpr.GithubPRAction"
                 text="Github PR Action" description="Github PR Action">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
