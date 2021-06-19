@@ -12,7 +12,6 @@ import git4idea.commands.Git
 import git4idea.commands.GitCommandResult
 import git4idea.repo.GitRemote
 
-
 public class GithubPRAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val task = object : Task.Backgroundable(e.project, "Opening PR") {
@@ -41,7 +40,6 @@ public class GithubPRAction : AnAction() {
                 }
             }
         }
-
 
         task.queue()
     }
