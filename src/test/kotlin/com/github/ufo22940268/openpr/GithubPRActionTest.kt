@@ -22,4 +22,20 @@ class GithubPRActionTest {
         val githubURL = GithubPRAction().buildGithubURL("123123", remote)
         assertNull(githubURL)
     }
+
+    @Test
+    fun testConvertGithubURL() {
+        val url = "git@github.com:UrbanCompass/uc-frontend.git"
+        val remote = GitRemote("origin", listOf(url), listOf(), listOf(), listOf())
+        val githubURL = GithubPRAction().buildGithubURL("123123", remote)
+        assertEquals("https://github.com/UrbanCompass/uc-frontend/pull/123123", githubURL)
+    }
+
+    @Test
+    fun testBuildGithubHTTPSURLForGithub() {
+        val url = "https://github.com/ufo22940268/GitLink.git"
+        val remote = GitRemote("origin", listOf(url), listOf(), listOf(), listOf())
+        val githubURL = GithubPRAction().buildGithubURL("123123", remote)
+        assertEquals("https://github.com/ufo22940268/GitLink/pull/123123", githubURL)
+    }
 }

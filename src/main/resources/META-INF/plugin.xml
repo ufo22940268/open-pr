@@ -20,6 +20,7 @@
     <actions>
         <action id="com.github.ufo22940268.openpr.GithubPRAction" class="com.github.ufo22940268.openpr.GithubPRAction"
                 text="Open Github PR" description="Open github PR For current HEAD">
+            <keyboard-shortcut first-keystroke="meta shift P" keymap="$default"/>
             <add-to-group group-id="ToolsMenu" anchor="first"/>
         </action>
     </actions>
