@@ -12,4 +12,6 @@ How it works:
 Currently, it only supports GitHub platform. 
 <!-- Plugin description end -->
 
-How to download this plugin: [link](https://plugins.jetbrains.com/plugin/17048-open-pr)
+## Download plugin
+
+[link](https://plugins.jetbrains.com/plugin/17048-open-pr)
